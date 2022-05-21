@@ -13,11 +13,12 @@
 		2D0E67AD2838C1DD0042BAD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E67AB2838C1DD0042BAD3 /* Main.storyboard */; };
 		2D0E67AF2838C1DE0042BAD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E67AE2838C1DE0042BAD3 /* Assets.xcassets */; };
 		2D0E67B22838C1DE0042BAD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E67B02838C1DE0042BAD3 /* LaunchScreen.storyboard */; };
-		2D0E67BD2838C1DE0042BAD3 /* calculatoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E67BC2838C1DE0042BAD3 /* calculatoryTests.swift */; };
+		2D0E67BD2838C1DE0042BAD3 /* MathEquationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E67BC2838C1DE0042BAD3 /* MathEquationTests.swift */; };
 		2D0E67C72838C1DE0042BAD3 /* calculatoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E67C62838C1DE0042BAD3 /* calculatoryUITests.swift */; };
 		2D0E67C92838C1DE0042BAD3 /* calculatoryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E67C82838C1DE0042BAD3 /* calculatoryUITestsLaunchTests.swift */; };
 		2D5D60F32838E2B200DAF85A /* UIColor+HexValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D60F22838E2B200DAF85A /* UIColor+HexValue.swift */; };
 		2D5D60F52838E43400DAF85A /* CalculatorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D60F42838E43400DAF85A /* CalculatorTheme.swift */; };
+		2D5D60F72838F1EB00DAF85A /* MathEquation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D60F62838F1EB00DAF85A /* MathEquation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,12 +48,13 @@
 		2D0E67B12838C1DE0042BAD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D0E67B32838C1DE0042BAD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D0E67B82838C1DE0042BAD3 /* calculatoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calculatoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D0E67BC2838C1DE0042BAD3 /* calculatoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculatoryTests.swift; sourceTree = "<group>"; };
+		2D0E67BC2838C1DE0042BAD3 /* MathEquationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathEquationTests.swift; sourceTree = "<group>"; };
 		2D0E67C22838C1DE0042BAD3 /* calculatoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calculatoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D0E67C62838C1DE0042BAD3 /* calculatoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculatoryUITests.swift; sourceTree = "<group>"; };
 		2D0E67C82838C1DE0042BAD3 /* calculatoryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculatoryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2D5D60F22838E2B200DAF85A /* UIColor+HexValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexValue.swift"; sourceTree = "<group>"; };
 		2D5D60F42838E43400DAF85A /* CalculatorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTheme.swift; sourceTree = "<group>"; };
+		2D5D60F62838F1EB00DAF85A /* MathEquation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathEquation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				2D5D60F12838E2A700DAF85A /* Extensions */,
 				2D0E67A52838C1DD0042BAD3 /* AppDelegate.swift */,
 				2D0E67A72838C1DD0042BAD3 /* SceneDelegate.swift */,
+				2D5D60F62838F1EB00DAF85A /* MathEquation.swift */,
 				2D0E67A92838C1DD0042BAD3 /* ViewController.swift */,
 				2D5D60F42838E43400DAF85A /* CalculatorTheme.swift */,
 				2D0E67AB2838C1DD0042BAD3 /* Main.storyboard */,
@@ -119,7 +122,7 @@
 		2D0E67BB2838C1DE0042BAD3 /* calculatoryTests */ = {
 			isa = PBXGroup;
 			children = (
-				2D0E67BC2838C1DE0042BAD3 /* calculatoryTests.swift */,
+				2D0E67BC2838C1DE0042BAD3 /* MathEquationTests.swift */,
 			);
 			path = calculatoryTests;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D0E67AA2838C1DD0042BAD3 /* ViewController.swift in Sources */,
+				2D5D60F72838F1EB00DAF85A /* MathEquation.swift in Sources */,
 				2D0E67A62838C1DD0042BAD3 /* AppDelegate.swift in Sources */,
 				2D5D60F52838E43400DAF85A /* CalculatorTheme.swift in Sources */,
 				2D0E67A82838C1DD0042BAD3 /* SceneDelegate.swift in Sources */,
@@ -284,7 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D0E67BD2838C1DE0042BAD3 /* calculatoryTests.swift in Sources */,
+				2D0E67BD2838C1DE0042BAD3 /* MathEquationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,7 +466,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -492,7 +496,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
