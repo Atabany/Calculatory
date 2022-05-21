@@ -7,6 +7,9 @@
 
 import UIKit
 
+
+
+
 class ViewController: UIViewController {
     
     // MARK: - IBOutlets
@@ -41,10 +44,13 @@ class ViewController: UIViewController {
     
     
     
+    var currentTheme: CalculatorTheme {
+        return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#000000", extraFunctionTitleColor: "#FFFFFF", operationColor: "#000000", operationTitleColor: "#FFFFFF", pinPadColor: "#000000", pinPadTitleColor: "#FFFFFF")
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         decorateView()
     }
     
@@ -59,23 +65,18 @@ class ViewController: UIViewController {
     
     
     private func decorateBackground() {
-        let backgroundColor: UIColor = .black
-        view.backgroundColor = backgroundColor
+        view.backgroundColor = UIColor(hex: currentTheme.backgroundColor)
     }
     
     private func decorateLCDDisplay() {
-        let backgroundColor: UIColor = .clear
-        let displayColor: UIColor = .white
-
-        lcdDisplay.backgroundColor = backgroundColor
-        lcdDisplayLabel.textColor = displayColor
+        lcdDisplay.backgroundColor = .clear
+        lcdDisplayLabel.textColor = UIColor(hex: currentTheme.displayColor)
     }
 
     
     
     
     private func decorateButtons() {
-        
         [
             pinPadButton0,
             pinPadButton1,
@@ -92,7 +93,6 @@ class ViewController: UIViewController {
             decoratePinPadButton($0)
         }
 
-
         [
             clearButton,
             negateButton,
@@ -102,8 +102,6 @@ class ViewController: UIViewController {
             decorateExtraFunctionButton($0)
         }
 
-
-    
         [divideButton,
          multiplyButton,
          addButton,
@@ -113,7 +111,6 @@ class ViewController: UIViewController {
         .forEach {
             decorateOperationButton($0)
         }
-        
         
     }
     
@@ -126,38 +123,24 @@ class ViewController: UIViewController {
     private func decorateExtraFunctionButton(_ button: UIButton) {
         decorateButton(button)
         
-        let extraFunctionColor: UIColor = .lightGray
-        let extraFunctionTitleColor: UIColor = .white
-        
-        button.tintColor = extraFunctionColor
-        button.setTitleColor(extraFunctionTitleColor, for: .normal)
-        
+        button.tintColor = UIColor(hex: currentTheme.extraFunctionColor)
+        button.setTitleColor(UIColor(hex: currentTheme.extraFunctionTitleColor), for: .normal)
     }
     
     
     private func decorateOperationButton(_ button: UIButton) {
         decorateButton(button)
         
-        
-        let operationColor: UIColor = .orange
-        let operationTitleColor: UIColor = .white
-        
-        button.tintColor = operationColor
-        button.setTitleColor(operationTitleColor, for: .normal)
-        
-        
+        button.tintColor = UIColor(hex: currentTheme.operationColor)
+        button.setTitleColor(UIColor(hex: currentTheme.operationTitleColor), for: .normal)
     }
     
     
     private func decoratePinPadButton(_ button: UIButton) {
         decorateButton(button)
-        
-        let pinPadColor: UIColor = .darkGray
-        let pinPadTitleColor: UIColor = .white
-        
-        button.tintColor = pinPadColor
-        button.setTitleColor(pinPadTitleColor, for: .normal)
-        
+                
+        button.tintColor = UIColor(hex: currentTheme.pinPadColor)
+        button.setTitleColor(UIColor(hex: currentTheme.pinPadTitleColor), for: .normal)
     }
     
     
