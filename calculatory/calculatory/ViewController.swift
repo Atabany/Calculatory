@@ -11,6 +11,9 @@ class ViewController: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var lcdDisplay: UIView!
+    @IBOutlet weak var lcdDisplayLabel: UILabel!
+    
     @IBOutlet weak var pinPadButton0: UIButton!
     @IBOutlet weak var pinPadButton1: UIButton!
     @IBOutlet weak var pinPadButton2: UIButton!
@@ -41,11 +44,38 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         decorateView()
     }
     
     
     private func decorateView() {
+        decorateBackground()
+        decorateLCDDisplay()
+        decorateButtons()
+    }
+    
+    
+    
+    
+    private func decorateBackground() {
+        let backgroundColor: UIColor = .black
+        view.backgroundColor = backgroundColor
+    }
+    
+    private func decorateLCDDisplay() {
+        let backgroundColor: UIColor = .clear
+        let displayColor: UIColor = .white
+
+        lcdDisplay.backgroundColor = backgroundColor
+        lcdDisplayLabel.textColor = displayColor
+    }
+
+    
+    
+    
+    private func decorateButtons() {
+        
         [
             pinPadButton0,
             pinPadButton1,
@@ -57,31 +87,32 @@ class ViewController: UIViewController {
             pinPadButton7,
             pinPadButton8,
             pinPadButton9,
+            decimalButton
         ] .forEach {
-            decorateButton($0)
+            decoratePinPadButton($0)
         }
-        
-        
-        
+
+
         [
             clearButton,
             negateButton,
             percentageButton,
-            
-            divideButton,
-            multiplyButton,
-            addButton,
-            minusButton,
-            equalsButton,
-            
-            decimalButton
         ]
-            
-            .forEach {
-                decorateButton($0)
-            }
-        
-        
+        .forEach {
+            decorateExtraFunctionButton($0)
+        }
+
+
+    
+        [divideButton,
+         multiplyButton,
+         addButton,
+         minusButton,
+         equalsButton,
+        ]
+        .forEach {
+            decorateOperationButton($0)
+        }
         
         
     }
@@ -89,8 +120,53 @@ class ViewController: UIViewController {
     private func decorateButton(_ button: UIButton) {
         button.setBackgroundImage(UIImage(named: "Circle"), for: .normal )
         button.backgroundColor = .clear
-        button.tintColor = .orange
     }
+    
+    
+    private func decorateExtraFunctionButton(_ button: UIButton) {
+        decorateButton(button)
+        
+        let extraFunctionColor: UIColor = .lightGray
+        let extraFunctionTitleColor: UIColor = .white
+        
+        button.tintColor = extraFunctionColor
+        button.setTitleColor(extraFunctionTitleColor, for: .normal)
+        
+    }
+    
+    
+    private func decorateOperationButton(_ button: UIButton) {
+        decorateButton(button)
+        
+        
+        let operationColor: UIColor = .orange
+        let operationTitleColor: UIColor = .white
+        
+        button.tintColor = operationColor
+        button.setTitleColor(operationTitleColor, for: .normal)
+        
+        
+    }
+    
+    
+    private func decoratePinPadButton(_ button: UIButton) {
+        decorateButton(button)
+        
+        let pinPadColor: UIColor = .darkGray
+        let pinPadTitleColor: UIColor = .white
+        
+        button.tintColor = pinPadColor
+        button.setTitleColor(pinPadTitleColor, for: .normal)
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 }

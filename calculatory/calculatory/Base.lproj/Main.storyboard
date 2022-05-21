@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -245,6 +244,8 @@
                         <outlet property="decimalButton" destination="oGm-bg-nwP" id="P8L-LH-Riw"/>
                         <outlet property="divideButton" destination="VcQ-SC-CDe" id="wAx-lu-jLT"/>
                         <outlet property="equalsButton" destination="9BS-eZ-S29" id="VCf-dL-VVC"/>
+                        <outlet property="lcdDisplay" destination="nB7-cD-w5F" id="Kr2-MK-sbE"/>
+                        <outlet property="lcdDisplayLabel" destination="Alf-MS-K8G" id="YNy-V8-hVp"/>
                         <outlet property="minusButton" destination="Ax2-O5-bAi" id="GFM-pu-CT9"/>
                         <outlet property="multiplyButton" destination="8C0-Nd-2ad" id="skA-mb-oSm"/>
                         <outlet property="negateButton" destination="MJQ-0i-eNJ" id="Blf-Y9-CMI"/>
