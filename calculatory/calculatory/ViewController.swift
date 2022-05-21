@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     
     
     var currentTheme: CalculatorTheme {
-        return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#000000", extraFunctionTitleColor: "#FFFFFF", operationColor: "#000000", operationTitleColor: "#FFFFFF", pinPadColor: "#000000", pinPadTitleColor: "#FFFFFF")
+        return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#a6a6a6", extraFunctionTitleColor: "#FFFFFF", operationColor: "#ff9f0a", operationTitleColor: "#FFFFFF", pinPadColor: "#333333", pinPadTitleColor: "#FFFFFF")
     }
     
     
@@ -77,8 +77,9 @@ class ViewController: UIViewController {
     
     
     private func decorateButtons() {
+        
+        // Pinpad Buttons
         [
-            pinPadButton0,
             pinPadButton1,
             pinPadButton2,
             pinPadButton3,
@@ -88,11 +89,16 @@ class ViewController: UIViewController {
             pinPadButton7,
             pinPadButton8,
             pinPadButton9,
-            decimalButton
         ] .forEach {
             decoratePinPadButton($0)
         }
+        
+        decoratePinPadButton(pinPadButton0, true)
+        // Decimal Button
+        decoratePinPadButton(decimalButton)
 
+        
+        // Extra function Buttons
         [
             clearButton,
             negateButton,
@@ -102,6 +108,9 @@ class ViewController: UIViewController {
             decorateExtraFunctionButton($0)
         }
 
+        
+        
+        // Operations Buttons
         [divideButton,
          multiplyButton,
          addButton,
@@ -114,8 +123,9 @@ class ViewController: UIViewController {
         
     }
     
-    private func decorateButton(_ button: UIButton) {
-        button.setBackgroundImage(UIImage(named: "Circle"), for: .normal )
+    private func decorateButton(_ button: UIButton , _ usingScliedImage: Bool = false) {
+        let image = usingScliedImage ? "CircleSliced" : "Circle"
+        button.setBackgroundImage(UIImage(named: image), for: .normal )
         button.backgroundColor = .clear
     }
     
@@ -125,6 +135,8 @@ class ViewController: UIViewController {
         
         button.tintColor = UIColor(hex: currentTheme.extraFunctionColor)
         button.setTitleColor(UIColor(hex: currentTheme.extraFunctionTitleColor), for: .normal)
+        
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 40)
     }
     
     
@@ -133,14 +145,18 @@ class ViewController: UIViewController {
         
         button.tintColor = UIColor(hex: currentTheme.operationColor)
         button.setTitleColor(UIColor(hex: currentTheme.operationTitleColor), for: .normal)
+        
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 50)
     }
     
     
-    private func decoratePinPadButton(_ button: UIButton) {
-        decorateButton(button)
+    private func decoratePinPadButton(_ button: UIButton, _ usingScliedImage: Bool = false) {
+        decorateButton(button, usingScliedImage)
                 
         button.tintColor = UIColor(hex: currentTheme.pinPadColor)
         button.setTitleColor(UIColor(hex: currentTheme.pinPadTitleColor), for: .normal)
+        
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
     }
     
     

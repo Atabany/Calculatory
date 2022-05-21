@@ -58,7 +58,7 @@
                                                 <rect key="frame" x="91.666666666666686" y="0.0" width="81.333333333333314" height="81.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="+/-"/>
+                                                <state key="normal" title="⁺∕₋"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1A-qf-mi7">
                                                 <rect key="frame" x="183.33333333333331" y="0.0" width="81.333333333333314" height="81.333333333333329"/>
@@ -70,7 +70,7 @@
                                                 <rect key="frame" x="274.66666666666669" y="0.0" width="81.666666666666686" height="81.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="/"/>
+                                                <state key="normal" title="÷"/>
                                             </button>
                                         </subviews>
                                         <constraints>
