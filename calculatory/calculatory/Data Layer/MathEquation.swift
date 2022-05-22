@@ -15,6 +15,8 @@ struct MathEquation {
         case subtract
         case multiply
         case divide
+        
+        
     }
     
     // lhs, (+ operator),  rhs,  (equal = ),  result
@@ -75,5 +77,26 @@ struct MathEquation {
         return decimal / 100
     }
     
+    
+    
+    // MARK: - String Representation
+    
+    func generatePrintOut() -> String {
+        guard let rhs = rhs,
+              let result = result else { return "" }
+        return "\(lhs) \(generateStringRepresentatoinOfOperation()) \(rhs) = \(result) "
+    }
+    
+    private func generateStringRepresentatoinOfOperation() -> String {
+        switch operation {
+        case .add: return "+"
+        case .subtract: return "-"
+        case .multiply: return "*"
+        case .divide: return "/"
+        case .none:
+            return ""
+        }
+    }
+
     
 }

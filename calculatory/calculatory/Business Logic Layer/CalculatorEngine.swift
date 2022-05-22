@@ -100,22 +100,22 @@ struct CalculatorEngine {
     
     mutating func addPressed() {
         mathEquation.operation = .add
-        chaneOperand()
+        chaneCurrentOperandToRightHandSide()
     }
     
     mutating func minusPressed() {
         mathEquation.operation = .subtract
-        chaneOperand()
+        chaneCurrentOperandToRightHandSide()
     }
     
     mutating func multiplyPressed() {
         mathEquation.operation = .multiply
-        chaneOperand()
+        chaneCurrentOperandToRightHandSide()
     }
     
     mutating func dividePressed() {
         mathEquation.operation = .divide
-        chaneOperand()
+        chaneCurrentOperandToRightHandSide()
     }
     
     mutating func equalsPressed() {
@@ -130,7 +130,12 @@ struct CalculatorEngine {
         } else {
             lcdDisplayText = String(describing: result)
         }
+        
+        printEquationToDebugConsole()
+        
     }
+    
+    
     
     // MARK: - Number Input
     
@@ -156,10 +161,17 @@ struct CalculatorEngine {
         }
     }
     
-    
-    mutating func chaneOperand() {
+    // MARK: - Change Operand To rightHandSide
+
+    mutating func chaneCurrentOperandToRightHandSide() {
         operandSide = .rightHandSide
     }
     
     
+    // MARK: - Debug Console
+    
+    private func printEquationToDebugConsole() {
+        print("Equation: " + mathEquation.generatePrintOut())
+    }
+
 }
