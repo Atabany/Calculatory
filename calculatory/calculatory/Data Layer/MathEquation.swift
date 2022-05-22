@@ -59,11 +59,21 @@ struct MathEquation {
         rhs?.negate()
     }
 
+    // MARK: - Percentage
+    mutating func applyPercentageToLeftHandSide() {
+        lhs =  calculatePercentageValue(lhs)
+    }
+
+    
+    mutating func applyPercentageToRightHandSide() {
+        guard let decimal = rhs else {return}
+        rhs =  calculatePercentageValue(decimal)
+    }
     
     
-    
-    
-    
+    private func calculatePercentageValue(_ decimal: Decimal) -> Decimal {
+        return decimal / 100
+    }
     
     
 }

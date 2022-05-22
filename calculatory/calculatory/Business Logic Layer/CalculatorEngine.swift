@@ -72,7 +72,28 @@ struct CalculatorEngine {
     }
     
     mutating func percentagePressed() {
+        var decimalNumber: Decimal?
         
+        switch operandSide {
+        case .leftHandSide:
+            mathEquation.applyPercentageToLeftHandSide()
+            decimalNumber = mathEquation.lhs
+        case .rightHandSide:
+            mathEquation.applyPercentageToRightHandSide()
+            decimalNumber = mathEquation.rhs
+        }
+
+        guard let decimalNumber = decimalNumber else {
+            lcdDisplayText = "Error"
+            return
+        }
+        
+        if #available(iOS 15.0, *) {
+            lcdDisplayText = decimalNumber.formatted()
+        } else {
+            lcdDisplayText = String(describing: decimalNumber)
+        }
+
     }
     
     // MARK: - Operations
