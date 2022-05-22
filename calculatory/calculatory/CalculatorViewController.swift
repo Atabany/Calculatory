@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CalculatorViewController.swift
 //  calculatory
 //
 //  Created by Mohamed Elatabany on 21/05/2022.
@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class ViewController: UIViewController {
+class CalculatorViewController: UIViewController {
     
     // MARK: - IBOutlets
     
@@ -43,17 +43,27 @@ class ViewController: UIViewController {
     @IBOutlet weak var equalsButton: UIButton!
     
     
+    // MARK: - Calculator Themes
     
     var currentTheme: CalculatorTheme {
         return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#a6a6a6", extraFunctionTitleColor: "#FFFFFF", operationColor: "#ff9f0a", operationTitleColor: "#FFFFFF", pinPadColor: "#333333", pinPadTitleColor: "#FFFFFF")
     }
     
     
+    // MARK: - Calculator Engine
+    private var calculatorEngine = CalculatorEngine()
+    
+    
+
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         decorateView()
     }
     
+    // MARK: - Decorate
     
     private func decorateView() {
         decorateBackground()
@@ -160,13 +170,55 @@ class ViewController: UIViewController {
     }
     
     
+    // MARK: - IBActions
+    // MARK: - Extra Button
+
+    @IBAction private func clearPressed() {
+        calculatorEngine.clearPressed()
+        
+    }
     
+    @IBAction private func negatePressed() {
+        calculatorEngine.negatePressed()
+    }
     
+    @IBAction private func percentagePressed() {
+        calculatorEngine.percentagePressed()
+    }
     
+    // MARK: - Operations
     
+    @IBAction private func addPressed() {
+        calculatorEngine.addPressed()
+    }
     
+    @IBAction private func minusPressed() {
+        calculatorEngine.minusPressed()
+    }
     
+    @IBAction private func multiplyPressed() {
+        calculatorEngine.multiplyPressed()
+    }
     
+    @IBAction private func dividePressed() {
+        calculatorEngine.dividePressed()
+    }
+    
+    @IBAction private func equalsPressed() {
+        calculatorEngine.equalsPressed()
+    }
+    
+    // MARK: - Number Input
+    
+    @IBAction private func decimalPressed() {
+        calculatorEngine.decimalPressed()
+    }
+    
+    @IBAction private func numberPressed(_ sender: UIButton) {
+        let number = sender.tag
+        calculatorEngine.numberPressed(number)
+    }
+
     
 }
 

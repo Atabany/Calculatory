@@ -11,11 +11,23 @@ import XCTest
 class MathEquationTests: XCTestCase {
 
 
-    func testAddition() throws {
-        var mathEquation = MathEquation(lhs: .zero)
+    private var mathEquation: MathEquation!
+    
+    override func setUp() {
+        super.setUp()
+        mathEquation = MathEquation(rhs: .zero)
         mathEquation.lhs = 4
-        mathEquation.operation = .add
         mathEquation.rhs = 8
+    }
+    
+    override func tearDown() {
+        mathEquation = nil
+        super.tearDown()
+    }
+    
+    
+    func testAddition() throws {
+        mathEquation.operation = .add
         mathEquation.execute()
         let expectedResult = Decimal(12)
         XCTAssertEqual(mathEquation.result, expectedResult)
@@ -24,10 +36,7 @@ class MathEquationTests: XCTestCase {
     
     
     func testSubstraction() throws {
-        var mathEquation = MathEquation(lhs: .zero)
-        mathEquation.lhs = 4
         mathEquation.operation = .subtract
-        mathEquation.rhs = 8
         mathEquation.execute()
         let expectedResult = Decimal(-4)
         XCTAssertEqual(mathEquation.result, expectedResult)
@@ -35,10 +44,7 @@ class MathEquationTests: XCTestCase {
 
     
     func testMultiplication() throws {
-        var mathEquation = MathEquation(lhs: .zero)
-        mathEquation.lhs = 4
         mathEquation.operation = .multiply
-        mathEquation.rhs = 8
         mathEquation.execute()
         let expectedResult = Decimal(32)
         XCTAssertEqual(mathEquation.result, expectedResult)
@@ -47,10 +53,7 @@ class MathEquationTests: XCTestCase {
 
     
     func testDivision() throws {
-        var mathEquation = MathEquation(lhs: .zero)
-        mathEquation.lhs = 4
         mathEquation.operation = .divide
-        mathEquation.rhs = 8
         mathEquation.execute()
         let expectedResult = Decimal(0.5)
         XCTAssertEqual(mathEquation.result, expectedResult)
