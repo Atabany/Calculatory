@@ -107,16 +107,10 @@
 		2D0E67A42838C1DD0042BAD3 /* calculatory */ = {
 			isa = PBXGroup;
 			children = (
-				2D5D60F12838E2A700DAF85A /* Extensions */,
-				2D0E67A52838C1DD0042BAD3 /* AppDelegate.swift */,
-				2D0E67A72838C1DD0042BAD3 /* SceneDelegate.swift */,
-				2D7B8CBD283A0027001A0F3C /* CalculatorEngine.swift */,
-				2D5D60F62838F1EB00DAF85A /* MathEquation.swift */,
-				2D0E67A92838C1DD0042BAD3 /* CalculatorViewController.swift */,
-				2D5D60F42838E43400DAF85A /* CalculatorTheme.swift */,
-				2D0E67AB2838C1DD0042BAD3 /* Main.storyboard */,
+				2D7B8CC4283A2E15001A0F3C /* Presentation Layer */,
+				2D7B8CC7283A2EB5001A0F3C /* Business Logic Layer */,
+				2D7B8CC8283A2EDD001A0F3C /* Data Layer */,
 				2D0E67AE2838C1DE0042BAD3 /* Assets.xcassets */,
-				2D0E67B02838C1DE0042BAD3 /* LaunchScreen.storyboard */,
 				2D0E67B32838C1DE0042BAD3 /* Info.plist */,
 			);
 			path = calculatory;
@@ -139,12 +133,58 @@
 			path = calculatoryUITests;
 			sourceTree = "<group>";
 		};
-		2D5D60F12838E2A700DAF85A /* Extensions */ = {
+		2D5D60F12838E2A700DAF85A /* UIKit Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				2D5D60F22838E2B200DAF85A /* UIColor+HexValue.swift */,
 			);
-			path = Extensions;
+			path = "UIKit Extensions";
+			sourceTree = "<group>";
+		};
+		2D7B8CC4283A2E15001A0F3C /* Presentation Layer */ = {
+			isa = PBXGroup;
+			children = (
+				2D5D60F12838E2A700DAF85A /* UIKit Extensions */,
+				2D7B8CC5283A2E7F001A0F3C /* Storyboards */,
+				2D7B8CC6283A2E89001A0F3C /* UIViewControllers */,
+				2D0E67A52838C1DD0042BAD3 /* AppDelegate.swift */,
+				2D0E67A72838C1DD0042BAD3 /* SceneDelegate.swift */,
+			);
+			path = "Presentation Layer";
+			sourceTree = "<group>";
+		};
+		2D7B8CC5283A2E7F001A0F3C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				2D0E67AB2838C1DD0042BAD3 /* Main.storyboard */,
+				2D0E67B02838C1DE0042BAD3 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		2D7B8CC6283A2E89001A0F3C /* UIViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2D0E67A92838C1DD0042BAD3 /* CalculatorViewController.swift */,
+			);
+			path = UIViewControllers;
+			sourceTree = "<group>";
+		};
+		2D7B8CC7283A2EB5001A0F3C /* Business Logic Layer */ = {
+			isa = PBXGroup;
+			children = (
+				2D7B8CBD283A0027001A0F3C /* CalculatorEngine.swift */,
+			);
+			path = "Business Logic Layer";
+			sourceTree = "<group>";
+		};
+		2D7B8CC8283A2EDD001A0F3C /* Data Layer */ = {
+			isa = PBXGroup;
+			children = (
+				2D5D60F42838E43400DAF85A /* CalculatorTheme.swift */,
+				2D5D60F62838F1EB00DAF85A /* MathEquation.swift */,
+			);
+			path = "Data Layer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
