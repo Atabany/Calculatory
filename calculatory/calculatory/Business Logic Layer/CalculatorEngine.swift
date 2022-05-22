@@ -11,14 +11,12 @@
 import Foundation
 
 struct CalculatorEngine {
-    
+
     
     enum OperandSide {
         case leftHandSide
         case rightHandSide
     }
-    
-    
     
     
     // MARK: - Math Equation
@@ -28,7 +26,7 @@ struct CalculatorEngine {
     
     
     // MARK: - LCD Display
-    var lcdDisplayText = ""
+    lazy var lcdDisplayText = ""
     
     
     
@@ -36,10 +34,40 @@ struct CalculatorEngine {
     // MARK: - Extra Functions
     
     mutating func clearPressed() {
+        mathEquation = MathEquation()
+        operandSide = .leftHandSide
         
+        if #available(iOS 15.0, *) {
+            lcdDisplayText = mathEquation.lhs.formatted()
+        } else {
+            lcdDisplayText = String(describing: mathEquation.lhs)
+        }
     }
     
     mutating func negatePressed() {
+        
+        var decimalNumber: Decimal?
+        
+        switch operandSide {
+        case .leftHandSide:
+            mathEquation.negateLeftHandSide()
+            decimalNumber = mathEquation.lhs
+        case .rightHandSide:
+            mathEquation.negateRightHandSide()
+            decimalNumber = mathEquation.rhs
+        }
+
+        guard let decimalNumber = decimalNumber else {
+            lcdDisplayText = "Error"
+            return
+        }
+        
+        if #available(iOS 15.0, *) {
+            lcdDisplayText = decimalNumber.formatted()
+        } else {
+            lcdDisplayText = String(describing: decimalNumber)
+        }
+        
         
     }
     
@@ -81,7 +109,6 @@ struct CalculatorEngine {
         } else {
             lcdDisplayText = String(describing: result)
         }
-        
     }
     
     // MARK: - Number Input
@@ -106,9 +133,6 @@ struct CalculatorEngine {
             // Fallback on earlier versions
             lcdDisplayText = String(describing: decimalValue)
         }
-        
-        
-        
     }
     
     
