@@ -20,6 +20,10 @@ struct MathInputController {
     private var operandSide = OperandSide.leftHandSide
     
     
+    // MARK: - Constants
+    let groupingSybmol = Locale.current.groupingSeparator ?? ","
+
+    
     // MARK: - Math Equation
     
     private(set) var mathEquation = MathEquation()
@@ -33,59 +37,33 @@ struct MathInputController {
     // MARK: - Initialiser
     
     init() {
-        if #available(iOS 15.0, *) {
-            lcdDisplayText = mathEquation.lhs.formatted()
-        } else {
-            lcdDisplayText = String(describing: mathEquation.lhs)
-        }
+        lcdDisplayText =  formatLCDDisplay(mathEquation.lhs)
     }
     
     
     // MARK: - Extra Functions
     
     mutating func negatePressed() {
-        
-        var decimalNumber: Decimal?
-        
         switch operandSide {
         case .leftHandSide:
             mathEquation.negateLeftHandSide()
-            decimalNumber = mathEquation.lhs
+            lcdDisplayText =  formatLCDDisplay(mathEquation.lhs)
         case .rightHandSide:
             mathEquation.negateRightHandSide()
-            decimalNumber = mathEquation.rhs
+            lcdDisplayText =  formatLCDDisplay(mathEquation.rhs)
         }
-        
-        
-        if #available(iOS 15.0, *) {
-            lcdDisplayText = decimalNumber?.formatted() ?? "Error"
-        } else {
-            let displayText = decimalNumber == nil ? "Error" : String(describing: decimalNumber)
-            lcdDisplayText = displayText
-        }
-        
     }
     
     
     mutating func percentagePressed() {
-        var decimalNumber: Decimal?
-        
         switch operandSide {
         case .leftHandSide:
             mathEquation.applyPercentageToLeftHandSide()
-            decimalNumber = mathEquation.lhs
+            lcdDisplayText = formatLCDDisplay(mathEquation.lhs)
         case .rightHandSide:
             mathEquation.applyPercentageToRightHandSide()
-            decimalNumber = mathEquation.rhs
+            lcdDisplayText = formatLCDDisplay(mathEquation.rhs)
         }
-        
-        if #available(iOS 15.0, *) {
-            lcdDisplayText = decimalNumber?.formatted() ?? "Error"
-        } else {
-            let displayText = decimalNumber == nil ? "Error" : String(describing: decimalNumber)
-            lcdDisplayText = displayText
-        }
-        
     }
     
     
@@ -114,13 +92,7 @@ struct MathInputController {
     
     mutating func execute() {
         mathEquation.execute()
-        
-        if #available(iOS 15.0, *) {
-            lcdDisplayText = mathEquation.result?.formatted() ?? "Error"
-        } else {
-            let displayText = mathEquation.result == nil ? "Error" : String(describing: mathEquation.result)
-            lcdDisplayText = displayText
-        }
+        lcdDisplayText = formatLCDDisplay(mathEquation.result)
     }
     
     
@@ -159,6 +131,10 @@ struct MathInputController {
         var newStringRepresentation = previousInput.isZero ? "" : lcdDisplayText
         newStringRepresentation.append(stringInput)
 
+        
+        newStringRepresentation = newStringRepresentation.replacingOccurrences(of: groupingSybmol , with: "")
+        
+        
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         formatter.numberStyle = .decimal
@@ -167,10 +143,22 @@ struct MathInputController {
         guard let convertedNumber = formatter.number(from: newStringRepresentation) else {return (.zero, "Error")}
 
         let newNumber = convertedNumber.decimalValue
-        let newLCDDisplayText = newStringRepresentation
-        
+
+        let newLCDDisplayText =  formatLCDDisplay(newNumber)
         
         return (newNumber, newLCDDisplayText)
     }
     
+    
+    
+    // MARK: - LCD Display Formatting
+    
+    private func formatLCDDisplay(_ number: Decimal?) -> String {
+        guard let number = number else { return  "Error" }
+        return number.formatted()
+    }
+    
+
 }
+
+
