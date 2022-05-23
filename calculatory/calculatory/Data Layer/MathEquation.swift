@@ -9,19 +9,13 @@ import Foundation
 
 struct MathEquation {
 
-    
     enum OperationType {
         case add
         case subtract
         case multiply
         case divide
-        
-        
     }
-    
-    // lhs, (+ operator),  rhs,  (equal = ),  result
-    // 4 + 4 = 8
-    
+
     var lhs: Decimal = .zero
     var rhs: Decimal?
     var operation: OperationType?
@@ -62,22 +56,20 @@ struct MathEquation {
     }
 
     // MARK: - Percentage
+    
     mutating func applyPercentageToLeftHandSide() {
         lhs =  calculatePercentageValue(lhs)
     }
-
     
     mutating func applyPercentageToRightHandSide() {
         guard let decimal = rhs else {return}
         rhs =  calculatePercentageValue(decimal)
     }
     
-    
     private func calculatePercentageValue(_ decimal: Decimal) -> Decimal {
         return decimal / 100
     }
-    
-    
+
     
     // MARK: - String Representation
     
@@ -98,5 +90,4 @@ struct MathEquation {
         }
     }
 
-    
 }
