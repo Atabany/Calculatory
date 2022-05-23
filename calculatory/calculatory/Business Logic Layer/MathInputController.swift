@@ -18,20 +18,20 @@ struct MathInputController {
     
     
     private var operandSide = OperandSide.leftHandSide
-
-
+    
+    
     // MARK: - Math Equation
     
     private(set) var mathEquation = MathEquation()
-
+    
     
     // MARK: - LCD Display
     
     var lcdDisplayText = ""
     
-
+    
     // MARK: - Initialiser
-
+    
     init() {
         if #available(iOS 15.0, *) {
             lcdDisplayText = mathEquation.lhs.formatted()
@@ -55,8 +55,8 @@ struct MathInputController {
             mathEquation.negateRightHandSide()
             decimalNumber = mathEquation.rhs
         }
-
-
+        
+        
         if #available(iOS 15.0, *) {
             lcdDisplayText = decimalNumber?.formatted() ?? "Error"
         } else {
@@ -85,7 +85,7 @@ struct MathInputController {
             let displayText = decimalNumber == nil ? "Error" : String(describing: decimalNumber)
             lcdDisplayText = displayText
         }
-
+        
     }
     
     
@@ -123,9 +123,9 @@ struct MathInputController {
         }
     }
     
-
+    
     // MARK: - Change Operand To rightHandSide
-
+    
     mutating func chaneCurrentOperandToRightHandSide() {
         operandSide = .rightHandSide
     }
@@ -139,22 +139,38 @@ struct MathInputController {
     }
     
     mutating func numberPressed(_ number: Int) {
-        let decimalValue = Decimal(number)
-        
+        guard number >= -9 , number <= 9 else { return }
         switch operandSide {
         case .leftHandSide:
-            mathEquation.lhs = decimalValue
+            let tuple = appendNewNumber(number, toPreviousInput: mathEquation.lhs)
+            mathEquation.lhs  = tuple.newNumber
+            lcdDisplayText = tuple.newLCDDisplayText
         case .rightHandSide:
-            mathEquation.rhs = decimalValue
-        }
-        
-        if #available(iOS 15.0, *) {
-            lcdDisplayText = decimalValue.formatted()
-        } else {
-            // Fallback on earlier versions
-            lcdDisplayText = String(describing: decimalValue)
+            let tuple = appendNewNumber(number, toPreviousInput: mathEquation.rhs ?? .zero)
+            mathEquation.rhs  = tuple.newNumber
+            lcdDisplayText = tuple.newLCDDisplayText
         }
     }
     
+    
+    private func appendNewNumber(_ number: Int, toPreviousInput previousInput: Decimal) -> (newNumber:  Decimal , newLCDDisplayText:  String) {
+
+        let stringInput = String(number)
+        var newStringRepresentation = previousInput.isZero ? "" : lcdDisplayText
+        newStringRepresentation.append(stringInput)
+
+        let formatter = NumberFormatter()
+        formatter.generatesDecimalNumbers = true
+        formatter.numberStyle = .decimal
+        
+        
+        guard let convertedNumber = formatter.number(from: newStringRepresentation) else {return (.zero, "Error")}
+
+        let newNumber = convertedNumber.decimalValue
+        let newLCDDisplayText = newStringRepresentation
+        
+        
+        return (newNumber, newLCDDisplayText)
+    }
     
 }
