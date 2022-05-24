@@ -20,6 +20,7 @@
 		2D5D60F52838E43400DAF85A /* CalculatorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D60F42838E43400DAF85A /* CalculatorTheme.swift */; };
 		2D5D60F72838F1EB00DAF85A /* MathEquation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D60F62838F1EB00DAF85A /* MathEquation.swift */; };
 		2D7B8CBE283A0027001A0F3C /* CalculatorEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8CBD283A0027001A0F3C /* CalculatorEngine.swift */; };
+		2D9FDE88283CDB6200338086 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FDE87283CDB6200338086 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		2D5D60F42838E43400DAF85A /* CalculatorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTheme.swift; sourceTree = "<group>"; };
 		2D5D60F62838F1EB00DAF85A /* MathEquation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathEquation.swift; sourceTree = "<group>"; };
 		2D7B8CBD283A0027001A0F3C /* CalculatorEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorEngine.swift; sourceTree = "<group>"; };
+		2D9FDE87283CDB6200338086 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				2D14A303283B81E50077DDD8 /* Decimal+Ext.swift */,
+				2D9FDE87283CDB6200338086 /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				2D0E67A82838C1DD0042BAD3 /* SceneDelegate.swift in Sources */,
 				2D7B8CBE283A0027001A0F3C /* CalculatorEngine.swift in Sources */,
 				2D5D60F32838E2B200DAF85A /* UIColor+HexValue.swift in Sources */,
+				2D9FDE88283CDB6200338086 /* String+Ext.swift in Sources */,
 				2D14A304283B81E50077DDD8 /* Decimal+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

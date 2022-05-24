@@ -21,13 +21,14 @@ struct MathInputController {
     
     
     // MARK: - Constants
-    let groupingSybmol = Locale.current.groupingSeparator ?? ","
+    private let groupingSybmol = Locale.current.groupingSeparator ?? ","
+    private let decimalSymbol = Locale.current.decimalSeparator ?? "."
 
     
     // MARK: - Math Equation
     
     private(set) var mathEquation = MathEquation()
-    
+    private var isEnteringDecimal = false
     
     // MARK: - LCD Display
     
@@ -72,22 +73,22 @@ struct MathInputController {
     
     mutating func addPressed() {
         mathEquation.operation = .add
-        chaneCurrentOperandToRightHandSide()
+        startEditingRightHandSide()
     }
     
     mutating func minusPressed() {
         mathEquation.operation = .subtract
-        chaneCurrentOperandToRightHandSide()
+        startEditingRightHandSide()
     }
     
     mutating func multiplyPressed() {
         mathEquation.operation = .multiply
-        chaneCurrentOperandToRightHandSide()
+        startEditingRightHandSide()
     }
     
     mutating func dividePressed() {
         mathEquation.operation = .divide
-        chaneCurrentOperandToRightHandSide()
+        startEditingRightHandSide()
     }
     
     mutating func execute() {
@@ -96,10 +97,11 @@ struct MathInputController {
     }
     
     
-    // MARK: - Change Operand To rightHandSide
+    // MARK: - Editing Right Hand Side
     
-    mutating func chaneCurrentOperandToRightHandSide() {
+    mutating private func startEditingRightHandSide() {
         operandSide = .rightHandSide
+        isEnteringDecimal = false
     }
     
     
@@ -107,8 +109,18 @@ struct MathInputController {
     // MARK: - Number Input
     
     mutating func decimalPressed() {
-        
+        isEnteringDecimal = true
+        lcdDisplayText = appendDecimalPointIfNeeded(lcdDisplayText)
     }
+    
+    
+    private func appendDecimalPointIfNeeded(_ string: String) -> String {
+        if string.contains(decimalSymbol) {
+            return string
+        }
+        return string.appending(decimalSymbol)
+    }
+    
     
     mutating func numberPressed(_ number: Int) {
         guard number >= -9 , number <= 9 else { return }
@@ -127,19 +139,23 @@ struct MathInputController {
     
     private func appendNewNumber(_ number: Int, toPreviousInput previousInput: Decimal) -> (newNumber:  Decimal , newLCDDisplayText:  String) {
 
+        guard isEnteringDecimal == false else {
+            return appendNewDecimalNumber(number)
+        }
+        
+        
         let stringInput = String(number)
         var newStringRepresentation = previousInput.isZero ? "" : lcdDisplayText
         newStringRepresentation.append(stringInput)
 
         
         newStringRepresentation = newStringRepresentation.replacingOccurrences(of: groupingSybmol , with: "")
-        
-        
+ 
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         formatter.numberStyle = .decimal
-        
-        
+
+
         guard let convertedNumber = formatter.number(from: newStringRepresentation) else {return (.zero, "Error")}
 
         let newNumber = convertedNumber.decimalValue
@@ -148,6 +164,20 @@ struct MathInputController {
         
         return (newNumber, newLCDDisplayText)
     }
+    
+    private func appendNewDecimalNumber(_ number: Int) -> (newNumber:  Decimal , newLCDDisplayText:  String) {
+        let stringInput = String(number)
+        let newLCDDisplayText = lcdDisplayText.appending(stringInput)
+        let formatter = NumberFormatter()
+        formatter.generatesDecimalNumbers = true
+        formatter.numberStyle = .decimal
+        guard let convertedNumber = formatter.number(from: newLCDDisplayText) else {return (.zero, "Error")}
+        let newNumber = convertedNumber.decimalValue
+        return (newNumber, newLCDDisplayText)
+    }
+    
+    
+    
     
     
     
