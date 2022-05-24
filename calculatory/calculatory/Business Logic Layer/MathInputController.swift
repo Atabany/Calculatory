@@ -23,7 +23,7 @@ struct MathInputController {
     // MARK: - Constants
     private let groupingSybmol = Locale.current.groupingSeparator ?? ","
     private let decimalSymbol = Locale.current.decimalSeparator ?? "."
-
+    private let minusSymbol = "-"
     
     // MARK: - Math Equation
     
@@ -48,10 +48,21 @@ struct MathInputController {
         switch operandSide {
         case .leftHandSide:
             mathEquation.negateLeftHandSide()
-            lcdDisplayText =  formatLCDDisplay(mathEquation.lhs)
+            displayNegateSymbolOnDisplay(mathEquation.lhs)
         case .rightHandSide:
             mathEquation.negateRightHandSide()
-            lcdDisplayText =  formatLCDDisplay(mathEquation.rhs)
+            displayNegateSymbolOnDisplay(mathEquation.rhs)
+        }
+    }
+    
+    
+    mutating private func displayNegateSymbolOnDisplay(_ decimal: Decimal?) {
+        guard let decimal = decimal else { return }
+        let isNegativeValue = decimal < 0 ? true : false
+        if isNegativeValue {
+            lcdDisplayText.addPrefixIfNeeded(minusSymbol)
+        } else {
+            lcdDisplayText.removePrefixIfNeeded(minusSymbol)
         }
     }
     
@@ -175,9 +186,6 @@ struct MathInputController {
         let newNumber = convertedNumber.decimalValue
         return (newNumber, newLCDDisplayText)
     }
-    
-    
-    
     
     
     

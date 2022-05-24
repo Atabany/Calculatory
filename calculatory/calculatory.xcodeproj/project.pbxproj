@@ -20,7 +20,7 @@
 		2D5D60F52838E43400DAF85A /* CalculatorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D60F42838E43400DAF85A /* CalculatorTheme.swift */; };
 		2D5D60F72838F1EB00DAF85A /* MathEquation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D60F62838F1EB00DAF85A /* MathEquation.swift */; };
 		2D7B8CBE283A0027001A0F3C /* CalculatorEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8CBD283A0027001A0F3C /* CalculatorEngine.swift */; };
-		2D9FDE88283CDB6200338086 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FDE87283CDB6200338086 /* String+Ext.swift */; };
+		2D9FDE8A283D3ADD00338086 /* String+Prefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FDE89283D3ADD00338086 /* String+Prefix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +58,7 @@
 		2D5D60F42838E43400DAF85A /* CalculatorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTheme.swift; sourceTree = "<group>"; };
 		2D5D60F62838F1EB00DAF85A /* MathEquation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathEquation.swift; sourceTree = "<group>"; };
 		2D7B8CBD283A0027001A0F3C /* CalculatorEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorEngine.swift; sourceTree = "<group>"; };
-		2D9FDE87283CDB6200338086 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		2D9FDE89283D3ADD00338086 /* String+Prefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Prefix.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +108,7 @@
 		2D0E67A42838C1DD0042BAD3 /* calculatory */ = {
 			isa = PBXGroup;
 			children = (
-				2D14A302283B81DB0077DDD8 /* Extensions */,
+				2D14A302283B81DB0077DDD8 /* Swift Extensions */,
 				2D7B8CC4283A2E15001A0F3C /* Presentation Layer */,
 				2D7B8CC7283A2EB5001A0F3C /* Business Logic Layer */,
 				2D7B8CC8283A2EDD001A0F3C /* Data Layer */,
@@ -126,13 +126,13 @@
 			path = calculatoryTests;
 			sourceTree = "<group>";
 		};
-		2D14A302283B81DB0077DDD8 /* Extensions */ = {
+		2D14A302283B81DB0077DDD8 /* Swift Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				2D14A303283B81E50077DDD8 /* Decimal+Ext.swift */,
-				2D9FDE87283CDB6200338086 /* String+Ext.swift */,
+				2D9FDE89283D3ADD00338086 /* String+Prefix.swift */,
 			);
-			path = Extensions;
+			path = "Swift Extensions";
 			sourceTree = "<group>";
 		};
 		2D5D60F12838E2A700DAF85A /* UIKit Extensions */ = {
@@ -322,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D0E67AA2838C1DD0042BAD3 /* CalculatorViewController.swift in Sources */,
+				2D9FDE8A283D3ADD00338086 /* String+Prefix.swift in Sources */,
 				2D5D60F72838F1EB00DAF85A /* MathEquation.swift in Sources */,
 				2D14A301283B57380077DDD8 /* MathInputController.swift in Sources */,
 				2D0E67A62838C1DD0042BAD3 /* AppDelegate.swift in Sources */,
@@ -329,7 +330,6 @@
 				2D0E67A82838C1DD0042BAD3 /* SceneDelegate.swift in Sources */,
 				2D7B8CBE283A0027001A0F3C /* CalculatorEngine.swift in Sources */,
 				2D5D60F32838E2B200DAF85A /* UIColor+HexValue.swift in Sources */,
-				2D9FDE88283CDB6200338086 /* String+Ext.swift in Sources */,
 				2D14A304283B81E50077DDD8 /* Decimal+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
