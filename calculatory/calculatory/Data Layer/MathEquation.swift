@@ -20,11 +20,15 @@ struct MathEquation {
     var rhs: Decimal?
     var operation: OperationType?
     var result: Decimal?
-    
-    
+
     // MARK: - Execution
+    
+    var executed: Bool {
+        return result != nil
+    }
 
     mutating func execute() {
+        
         guard
             let operation = operation,
             let rhs = rhs else {return}
@@ -32,7 +36,6 @@ struct MathEquation {
         switch operation {
         case .add:
             result = lhs + rhs
-            
         case .subtract:
             result = lhs - rhs
         case .multiply:
@@ -40,7 +43,7 @@ struct MathEquation {
         case .divide:
             result = lhs / rhs
         }
-        
+
     }
     
     
