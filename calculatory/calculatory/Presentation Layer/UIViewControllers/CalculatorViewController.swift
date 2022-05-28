@@ -71,8 +71,7 @@ class CalculatorViewController: UIViewController {
     @objc
     private func themeGestureRecognizerDidTap(_ gesture: UITapGestureRecognizer) {
         print("User Did Tap")
-        decorateViewWithNextTheme()
-        
+        decorateViewWithNextTheme()        
     }
     
     
