@@ -16,6 +16,8 @@ enum StatusBarStyle {
 
 struct CalculatorTheme {
     
+    let id = UUID()
+    
     // Main View
     let backgroundColor: String
 

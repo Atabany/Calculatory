@@ -16,23 +16,13 @@ class ThemeManager {
     // MARK: -  Singleton
     
     static let shared = ThemeManager()
-    private init () {
-        populateArrayOfThemes()
-    }
-
+    
     
     // MARK: - Themes
     
     private(set) var themes: [CalculatorTheme] = []
-    private var savedTheme: CalculatorTheme? {
-        get {
-            return darkTheme
-        }
-        
-        set {
-            savedTheme = darkTheme
-        }
-    }
+    private var savedTheme: CalculatorTheme?
+    
     
     var currentTheme: CalculatorTheme {
         guard let savedTheme = savedTheme else {
@@ -41,20 +31,51 @@ class ThemeManager {
         return savedTheme
     }
     
-
+    
+    
+    // MARK: - life Cycle
+    
+    private init () {
+        populateArrayOfThemes()
+    }
+    
+    
     private func populateArrayOfThemes() {
         themes = [
             darkTheme,
             purpleTheme,
             bloodOrangeTheme,
-            darkTheme,
+            lightBlueTheme,
             electroTheme,
             lightTheme,
-            lightTheme,
+            darkBlueTheme,
             orangeTheme,
             pinkTheme,
             washedOutTheme
         ]
+    }
+    
+    
+    // MARK: - Next Theme
+
+    
+    func moveToNextTheme() {
+        
+        let indexTheme = themes.firstIndex { theme in
+            theme.id == currentTheme.id
+        }
+
+        guard var index = indexTheme else {return}
+        
+        index += 1
+        
+        if index > themes.count - 1 {
+            index = 0
+        }
+        
+        
+        savedTheme = themes[index]
+        
     }
     
 }

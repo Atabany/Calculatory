@@ -56,12 +56,37 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        decorateView()
+        addThemeGestureRecognizer()
+        reDecorateView()
     }
+    
+    
+    // MARK: - Gestures
+    private func addThemeGestureRecognizer() {
+        let themeGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(themeGestureRecognizerDidTap(_:)))
+        themeGestureRecognizer.numberOfTapsRequired = 2
+        lcdDisplay.addGestureRecognizer(themeGestureRecognizer)
+    }
+
+    @objc
+    private func themeGestureRecognizerDidTap(_ gesture: UITapGestureRecognizer) {
+        print("User Did Tap")
+        decorateViewWithNextTheme()
+        
+    }
+    
+    
     
     // MARK: - Decorate
     
-    private func decorateView() {
+    private func decorateViewWithNextTheme() {
+        ThemeManager.shared.moveToNextTheme()
+        reDecorateView()
+    }
+    
+    
+    
+    private func reDecorateView() {
         decorateBackground()
         decorateLCDDisplay()
         decorateButtons()
@@ -78,13 +103,12 @@ class CalculatorViewController: UIViewController {
             case .dark: return .darkContent
         }
     }
-    
-    
-    
+        
     
     private func decorateBackground() {
         view.backgroundColor = UIColor(hex: currentTheme.backgroundColor)
     }
+    
     
     private func decorateLCDDisplay() {
         lcdDisplay.backgroundColor = .clear
@@ -245,4 +269,5 @@ class CalculatorViewController: UIViewController {
     }
     
 }
+
 

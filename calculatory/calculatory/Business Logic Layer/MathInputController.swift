@@ -214,9 +214,6 @@ struct MathInputController {
         else {
             return  errorMessage
         }
-        
-        print(decimal)
-        
         return decimal.formatted()
     }
  
