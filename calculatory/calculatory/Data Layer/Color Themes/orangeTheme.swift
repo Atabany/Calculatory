@@ -8,7 +8,7 @@
 import Foundation
 
 
-extension CalculatorViewController {
+extension ThemeManager {
     
     var orangeTheme: CalculatorTheme {
         return CalculatorTheme(

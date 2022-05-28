@@ -43,7 +43,7 @@ class CalculatorViewController: UIViewController {
     // MARK: - Calculator Themes
     
     var currentTheme: CalculatorTheme {
-        return washedOutTheme
+        return ThemeManager.shared.currentTheme
     }
     
     
@@ -51,8 +51,7 @@ class CalculatorViewController: UIViewController {
     private var calculatorEngine = CalculatorEngine()
     
     
-    
-    
+
     // MARK: - Life Cycle
     
     override func viewDidLoad() {

@@ -29,6 +29,7 @@
 		2D5F1F6928420C4200FE65FC /* darkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F1F5F28420C4200FE65FC /* darkTheme.swift */; };
 		2D5F1F6A28420C4200FE65FC /* orangeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F1F6028420C4200FE65FC /* orangeTheme.swift */; };
 		2D5F1F6B28420C4200FE65FC /* lightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F1F6128420C4200FE65FC /* lightTheme.swift */; };
+		2D5F1F6E28421D1D00FE65FC /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F1F6D28421D1D00FE65FC /* ThemeManager.swift */; };
 		2D7B8CBE283A0027001A0F3C /* CalculatorEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8CBD283A0027001A0F3C /* CalculatorEngine.swift */; };
 		2D9FDE8A283D3ADD00338086 /* String+Prefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9FDE89283D3ADD00338086 /* String+Prefix.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		2D5F1F5F28420C4200FE65FC /* darkTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = darkTheme.swift; sourceTree = "<group>"; };
 		2D5F1F6028420C4200FE65FC /* orangeTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = orangeTheme.swift; sourceTree = "<group>"; };
 		2D5F1F6128420C4200FE65FC /* lightTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lightTheme.swift; sourceTree = "<group>"; };
+		2D5F1F6D28421D1D00FE65FC /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		2D7B8CBD283A0027001A0F3C /* CalculatorEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorEngine.swift; sourceTree = "<group>"; };
 		2D9FDE89283D3ADD00338086 /* String+Prefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Prefix.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,6 +216,7 @@
 			children = (
 				2D7B8CBD283A0027001A0F3C /* CalculatorEngine.swift */,
 				2D14A300283B57380077DDD8 /* MathInputController.swift */,
+				2D5F1F6D28421D1D00FE65FC /* ThemeManager.swift */,
 			);
 			path = "Business Logic Layer";
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				2D14A304283B81E50077DDD8 /* Decimal+Ext.swift in Sources */,
 				2D5F1F6628420C4200FE65FC /* pinkTheme.swift in Sources */,
 				2D5F1F6828420C4200FE65FC /* electroTheme.swift in Sources */,
+				2D5F1F6E28421D1D00FE65FC /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

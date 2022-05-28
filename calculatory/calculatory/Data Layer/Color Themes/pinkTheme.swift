@@ -8,7 +8,7 @@
 import Foundation
 
 
-extension CalculatorViewController {
+extension ThemeManager {
     
     var pinkTheme: CalculatorTheme {
         return CalculatorTheme(
