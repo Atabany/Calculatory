@@ -7,9 +7,6 @@
 
 import UIKit
 
-
-
-
 class CalculatorViewController: UIViewController {
     
     // MARK: - IBOutlets
@@ -46,7 +43,7 @@ class CalculatorViewController: UIViewController {
     // MARK: - Calculator Themes
     
     var currentTheme: CalculatorTheme {
-        return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#a6a6a6", extraFunctionTitleColor: "#FFFFFF", operationColor: "#ff9f0a", operationTitleColor: "#FFFFFF", pinPadColor: "#333333", pinPadTitleColor: "#FFFFFF")
+        return washedOutTheme
     }
     
     
@@ -54,7 +51,7 @@ class CalculatorViewController: UIViewController {
     private var calculatorEngine = CalculatorEngine()
     
     
-
+    
     
     // MARK: - Life Cycle
     
@@ -69,6 +66,18 @@ class CalculatorViewController: UIViewController {
         decorateBackground()
         decorateLCDDisplay()
         decorateButtons()
+        
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    
+    // MARK: - statusBar
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        switch currentTheme.statusBarStyle {
+            case .light: return .lightContent
+            case .dark: return .darkContent
+        }
     }
     
     
@@ -82,7 +91,7 @@ class CalculatorViewController: UIViewController {
         lcdDisplay.backgroundColor = .clear
         lcdDisplayLabel.textColor = UIColor(hex: currentTheme.displayColor)
     }
-
+    
     
     
     
@@ -106,7 +115,7 @@ class CalculatorViewController: UIViewController {
         decoratePinPadButton(pinPadButton0, true)
         // Decimal Button
         decoratePinPadButton(decimalButton)
-
+        
         
         // Extra function Buttons
         [
@@ -114,10 +123,10 @@ class CalculatorViewController: UIViewController {
             negateButton,
             percentageButton,
         ]
-        .forEach {
-            decorateExtraFunctionButton($0)
-        }
-
+            .forEach {
+                decorateExtraFunctionButton($0)
+            }
+        
         
         
         // Operations Buttons
@@ -127,9 +136,9 @@ class CalculatorViewController: UIViewController {
          minusButton,
          equalsButton,
         ]
-        .forEach {
-            decorateOperationButton($0)
-        }
+            .forEach {
+                decorateOperationButton($0)
+            }
         
     }
     
@@ -162,9 +171,9 @@ class CalculatorViewController: UIViewController {
     
     private func decoratePinPadButton(_ button: UIButton, _ usingScliedImage: Bool = false) {
         decorateButton(button, usingScliedImage)
-                
-        button.tintColor = UIColor(hex: currentTheme.pinPadColor)
-        button.setTitleColor(UIColor(hex: currentTheme.pinPadTitleColor), for: .normal)
+        
+        button.tintColor = UIColor(hex: currentTheme.pinpadColor)
+        button.setTitleColor(UIColor(hex: currentTheme.pinpadTitleColor), for: .normal)
         
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
     }
@@ -172,7 +181,7 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - IBActions
     // MARK: - Extra Button
-
+    
     @IBAction private func clearPressed() {
         calculatorEngine.clearPressed()
         refreshLCDDisplay()
@@ -228,13 +237,13 @@ class CalculatorViewController: UIViewController {
         calculatorEngine.numberPressed(number)
         refreshLCDDisplay()
     }
-
+    
     
     // MARK: - Refresh LCDDisplay
     
     private func refreshLCDDisplay() {
         lcdDisplayLabel.text = calculatorEngine.lcdDisplayText
     }
-
+    
 }
 

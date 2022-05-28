@@ -40,7 +40,7 @@ struct CalculatorEngine {
     
     mutating func negatePressed() {
         guard inputController.isCompleted == false else { return }
-
+ 
         inputController.negatePressed()
     }
     
