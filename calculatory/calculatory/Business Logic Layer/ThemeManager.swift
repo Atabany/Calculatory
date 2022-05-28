@@ -19,9 +19,13 @@ class ThemeManager {
     
     
     // MARK: - Themes
-    
+    private var savedThemeIndex = 0
+
     private(set) var themes: [CalculatorTheme] = []
-    private var savedTheme: CalculatorTheme?
+    
+    private var savedTheme: CalculatorTheme? {
+        return themes[savedThemeIndex]
+    }
     
     
     var currentTheme: CalculatorTheme {
@@ -37,6 +41,7 @@ class ThemeManager {
     
     private init () {
         populateArrayOfThemes()
+        restoreSavedThemeIndex()
     }
     
     
@@ -56,26 +61,32 @@ class ThemeManager {
     }
     
     
-    // MARK: - Next Theme
+    
+    
+    // MARK: - Save & Restore To Disk
+    private func restoreSavedThemeIndex() {
+        if let previousThemeIndex = UserDefaults.standard.object(forKey: "mohamedElatabany.com.calcu.ThemeManager.ThemeIndex") as? Int {
+            savedThemeIndex  = previousThemeIndex
+        }
+        
+    }
+    
+    
+    private func saveThemeIndexToDisk() {
+        UserDefaults.standard.set(savedThemeIndex, forKey: "mohamedElatabany.com.calcu.ThemeManager.ThemeIndex")
+        UserDefaults.standard.synchronize()
+    }
 
     
+    
+    // MARK: - Next Theme
+    
     func moveToNextTheme() {
-        
-        let indexTheme = themes.firstIndex { theme in
-            theme.id == currentTheme.id
+        savedThemeIndex += 1
+        if savedThemeIndex > themes.count - 1 {
+            savedThemeIndex = 0
         }
-
-        guard var index = indexTheme else {return}
-        
-        index += 1
-        
-        if index > themes.count - 1 {
-            index = 0
-        }
-        
-        
-        savedTheme = themes[index]
-        
+        saveThemeIndexToDisk()
     }
     
 }
