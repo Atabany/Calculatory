@@ -16,6 +16,7 @@
 		2D0E67BD2838C1DE0042BAD3 /* MathEquationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E67BC2838C1DE0042BAD3 /* MathEquationTests.swift */; };
 		2D14A301283B57380077DDD8 /* MathInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D14A300283B57380077DDD8 /* MathInputController.swift */; };
 		2D14A304283B81E50077DDD8 /* Decimal+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D14A303283B81E50077DDD8 /* Decimal+Ext.swift */; };
+		2D5A4468284235F300027D38 /* DataStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5A4467284235F300027D38 /* DataStoreManager.swift */; };
 		2D5D60F32838E2B200DAF85A /* UIColor+HexValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D60F22838E2B200DAF85A /* UIColor+HexValue.swift */; };
 		2D5D60F52838E43400DAF85A /* CalculatorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D60F42838E43400DAF85A /* CalculatorTheme.swift */; };
 		2D5D60F72838F1EB00DAF85A /* MathEquation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D60F62838F1EB00DAF85A /* MathEquation.swift */; };
@@ -65,6 +66,7 @@
 		2D0E67C22838C1DE0042BAD3 /* calculatoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calculatoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D14A300283B57380077DDD8 /* MathInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathInputController.swift; sourceTree = "<group>"; };
 		2D14A303283B81E50077DDD8 /* Decimal+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Ext.swift"; sourceTree = "<group>"; };
+		2D5A4467284235F300027D38 /* DataStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreManager.swift; sourceTree = "<group>"; };
 		2D5D60F22838E2B200DAF85A /* UIColor+HexValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexValue.swift"; sourceTree = "<group>"; };
 		2D5D60F42838E43400DAF85A /* CalculatorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTheme.swift; sourceTree = "<group>"; };
 		2D5D60F62838F1EB00DAF85A /* MathEquation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathEquation.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				2D7B8CC4283A2E15001A0F3C /* Presentation Layer */,
 				2D7B8CC7283A2EB5001A0F3C /* Business Logic Layer */,
 				2D7B8CC8283A2EDD001A0F3C /* Data Layer */,
+				2D5A44662842337600027D38 /* Data Storage LAyer */,
 				2D0E67AE2838C1DE0042BAD3 /* Assets.xcassets */,
 				2D0E67B32838C1DE0042BAD3 /* Info.plist */,
 			);
@@ -155,6 +158,14 @@
 				2D9FDE89283D3ADD00338086 /* String+Prefix.swift */,
 			);
 			path = "Swift Extensions";
+			sourceTree = "<group>";
+		};
+		2D5A44662842337600027D38 /* Data Storage LAyer */ = {
+			isa = PBXGroup;
+			children = (
+				2D5A4467284235F300027D38 /* DataStoreManager.swift */,
+			);
+			path = "Data Storage LAyer";
 			sourceTree = "<group>";
 		};
 		2D5D60F12838E2A700DAF85A /* UIKit Extensions */ = {
@@ -377,6 +388,7 @@
 				2D5F1F6228420C4200FE65FC /* purpleTheme.swift in Sources */,
 				2D7B8CBE283A0027001A0F3C /* CalculatorEngine.swift in Sources */,
 				2D5F1F6B28420C4200FE65FC /* lightTheme.swift in Sources */,
+				2D5A4468284235F300027D38 /* DataStoreManager.swift in Sources */,
 				2D5D60F32838E2B200DAF85A /* UIColor+HexValue.swift in Sources */,
 				2D5F1F6328420C4200FE65FC /* washedOutTheme.swift in Sources */,
 				2D14A304283B81E50077DDD8 /* Decimal+Ext.swift in Sources */,

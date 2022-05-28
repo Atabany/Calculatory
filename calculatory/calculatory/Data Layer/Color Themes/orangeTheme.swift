@@ -12,6 +12,7 @@ extension ThemeManager {
     
     var orangeTheme: CalculatorTheme {
         return CalculatorTheme(
+            id: "7",
             backgroundColor:                "#DC6969",
             displayColor:                   "#FFFFFF",
                                

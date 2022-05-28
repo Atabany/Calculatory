@@ -18,14 +18,17 @@ class ThemeManager {
     static let shared = ThemeManager()
     
     
+    // MARK: - Data Storage
+    private var dataStore: DataStoreProtocol?
+    
+    
+    
     // MARK: - Themes
     private var savedThemeIndex = 0
 
     private(set) var themes: [CalculatorTheme] = []
     
-    private var savedTheme: CalculatorTheme? {
-        return themes[savedThemeIndex]
-    }
+    private var savedTheme: CalculatorTheme?
     
     
     var currentTheme: CalculatorTheme {
@@ -36,12 +39,12 @@ class ThemeManager {
     }
     
     
-    
     // MARK: - life Cycle
     
     private init () {
+        dataStore = DataStoreUserDefaultsManager(key: "mohamedElatabany.com.calcu.ThemeManager.ThemeIndex")
         populateArrayOfThemes()
-        restoreSavedThemeIndex()
+        restoreSavedTheme()
     }
     
     
@@ -58,35 +61,44 @@ class ThemeManager {
             pinkTheme,
             washedOutTheme
         ]
+        
     }
     
     
     
     
     // MARK: - Save & Restore To Disk
-    private func restoreSavedThemeIndex() {
-        if let previousThemeIndex = UserDefaults.standard.object(forKey: "mohamedElatabany.com.calcu.ThemeManager.ThemeIndex") as? Int {
-            savedThemeIndex  = previousThemeIndex
-        }
-        
+    private func restoreSavedTheme() {
+        guard let encodedTheme = dataStore?.getValue() as? Data else {return}
+        let decoder = JSONDecoder()
+        savedTheme =  try? decoder.decode(CalculatorTheme.self, from: encodedTheme)
+        savedThemeIndex = setSavedIndexThemeId(savedTheme)
+    }
+    
+    private func setSavedIndexThemeId(_ savedTheme: CalculatorTheme?) -> Int {
+        return themes.firstIndex { $0.id == savedTheme?.id  } ?? 0
     }
     
     
-    private func saveThemeIndexToDisk() {
-        UserDefaults.standard.set(savedThemeIndex, forKey: "mohamedElatabany.com.calcu.ThemeManager.ThemeIndex")
-        UserDefaults.standard.synchronize()
+    private func saveThemeToDisk(_ theme: CalculatorTheme) {
+        let encoder = JSONEncoder()
+        guard let encodedTheme = try? encoder.encode(theme) else { return }
+        dataStore?.set(encodedTheme)
     }
 
-    
     
     // MARK: - Next Theme
     
     func moveToNextTheme() {
+        
         savedThemeIndex += 1
         if savedThemeIndex > themes.count - 1 {
             savedThemeIndex = 0
         }
-        saveThemeIndexToDisk()
+        
+        let theme = themes[savedThemeIndex]
+        savedTheme = theme
+        saveThemeToDisk(theme)
     }
     
 }

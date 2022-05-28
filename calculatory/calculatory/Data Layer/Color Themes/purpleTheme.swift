@@ -12,6 +12,7 @@ extension ThemeManager {
     
     var purpleTheme: CalculatorTheme {
         return CalculatorTheme(
+            id: "9",
             backgroundColor:                "#F4F5FA",
             displayColor:                   "#1D1D1D",
                                

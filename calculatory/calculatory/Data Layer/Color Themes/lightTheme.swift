@@ -12,6 +12,7 @@ extension ThemeManager {
     
     var lightTheme: CalculatorTheme {
         return CalculatorTheme(
+            id: "6",
             backgroundColor:                "#F6F8F9",
             displayColor:                   "#000000",
                                

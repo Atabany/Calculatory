@@ -7,16 +7,16 @@
 
 import Foundation
 
-enum StatusBarStyle {
+enum StatusBarStyle: Codable {
     case light
     case dark
     
 }
 
 
-struct CalculatorTheme {
+struct CalculatorTheme: Codable {
     
-    let id = UUID()
+    var id: String
     
     // Main View
     let backgroundColor: String
